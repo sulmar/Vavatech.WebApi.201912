@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Routing;
+using Vavatech.WebApi.Api.Contstraints;
 
 namespace Vavatech.WebApi.Api
 {
@@ -11,8 +13,12 @@ namespace Vavatech.WebApi.Api
         {
             // Web API configuration and services
 
+            var constraintResolver = new DefaultInlineConstraintResolver();
+
+            constraintResolver.ConstraintMap.Add("pesel", typeof(PeselRouteConstraint));
+
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes(constraintResolver);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

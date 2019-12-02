@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Http;
 using Vavatech.WebApi.FakeServices;
 using Vavatech.WebApi.IServices;
+using Vavatech.WebApi.Models;
 
 namespace Vavatech.WebApi.Api.Controllers
 {
+    [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
         private readonly ICustomerService customerService;
@@ -23,6 +25,7 @@ namespace Vavatech.WebApi.Api.Controllers
             this.customerService = customerService;
         }
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             var customers = customerService.Get();
@@ -30,19 +33,78 @@ namespace Vavatech.WebApi.Api.Controllers
             return Ok(customers);
         }
 
+
+        // constraint
+        [HttpGet]
+        [Route("{id:int}", Order = 2)]
         public IHttpActionResult Get(int id)
         {
             var customer = customerService.Get(id);
 
+            if (customer == null)
+                return NotFound();
+
             return Ok(customer);
         }
 
-        public IHttpActionResult Get(string pesel)
+        [HttpGet]
+        [Route("{number:pesel}", Order = 1)]
+        public IHttpActionResult Get(string number)
         {
-            var customer = customerService.Get(pesel);
+            var customer = customerService.Get(number);
+
+            if (customer == null)
+                return NotFound();
 
             return Ok(customer);
         }
+
+        [HttpPost]
+        public IHttpActionResult Post(Customer customer)
+        {
+            customerService.Add(customer);
+
+            return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IHttpActionResult Put(int id, Customer customer)
+        {
+            if (id != customer.Id)
+                return BadRequest();
+
+            customerService.Update(customer);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IHttpActionResult Delete(int id)
+        {
+            customerService.Remove(id);
+
+            return Ok();
+        }
+
+        [HttpHead]
+        [Route("{id:int}")]
+        public IHttpActionResult Exists(int id)
+        {
+            if (customerService.Exists(id))
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+       
+
+        
 
        
     }

@@ -23,6 +23,11 @@ namespace Vavatech.WebApi.FakeServices
             customers.Add(customer);
         }
 
+        public bool Exists(int id)
+        {
+            return customers.Any(p=>p.Id == id);
+        }
+
         public IEnumerable<Customer> Get()
         {
             return customers;
