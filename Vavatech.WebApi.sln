@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WebApi.Api", "Vavatech.WebApi.Api\Vavatech.WebApi.Api.csproj", "{13EAC854-F3BE-4B1D-AEDD-B2F54FD9BDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WebApi.Models", "Vavatech.WebApi.Models\Vavatech.WebApi.Models.csproj", "{0837EACD-A961-4687-BB94-D70E090548B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13EAC854-F3BE-4B1D-AEDD-B2F54FD9BDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EAC854-F3BE-4B1D-AEDD-B2F54FD9BDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EAC854-F3BE-4B1D-AEDD-B2F54FD9BDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EAC854-F3BE-4B1D-AEDD-B2F54FD9BDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0837EACD-A961-4687-BB94-D70E090548B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0837EACD-A961-4687-BB94-D70E090548B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0837EACD-A961-4687-BB94-D70E090548B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0837EACD-A961-4687-BB94-D70E090548B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E873F371-B65D-4915-9A61-55575DCCFF3C}
+	EndGlobalSection
+EndGlobal
