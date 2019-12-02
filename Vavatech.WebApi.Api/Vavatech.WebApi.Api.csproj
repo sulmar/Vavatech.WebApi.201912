@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bogus, Version=28.4.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.28.4.2\lib\net40\Bogus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -155,6 +158,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -245,6 +249,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vavatech.WebApi.FakeServices\Vavatech.WebApi.FakeServices.csproj">
+      <Project>{DC46BDAE-BFFB-449B-8BBF-16104290B8A8}</Project>
+      <Name>Vavatech.WebApi.FakeServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vavatech.WebApi.IServices\Vavatech.WebApi.IServices.csproj">
+      <Project>{05FFBB0E-397F-490C-8458-514C0B6A4426}</Project>
+      <Name>Vavatech.WebApi.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vavatech.WebApi.Models\Vavatech.WebApi.Models.csproj">
+      <Project>{0837EACD-A961-4687-BB94-D70E090548B6}</Project>
+      <Name>Vavatech.WebApi.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

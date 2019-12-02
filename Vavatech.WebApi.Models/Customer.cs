@@ -8,6 +8,7 @@ namespace Vavatech.WebApi.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Pesel { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public decimal Salary { get; set; }
         public Gender Gender { get; set; }
