@@ -86,9 +86,13 @@ namespace Vavatech.WebApi.Api.Controllers
         [HttpGet]
         public IHttpActionResult Get([FromUri] ProductSearchCriteria criteria)
         {
+            
+            
             var products = productService.Get(criteria);
 
-            return Ok(products);
+            var response = Ok(products);
+
+            return response;
         }
 
         /// api/customers/10/products
