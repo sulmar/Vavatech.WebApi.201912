@@ -10,6 +10,7 @@ namespace Vavatech.WebApi.FakeServices
     {
         public CustomerFaker()
         {
+            StrictMode(true);
             RuleFor(p => p.Id, f => f.IndexFaker);
             RuleFor(p => p.FirstName, f => f.Person.FirstName);
             RuleFor(p => p.LastName, f => f.Person.LastName);
@@ -19,5 +20,7 @@ namespace Vavatech.WebApi.FakeServices
             RuleFor(p => p.Pesel, f => f.Commerce.Ean13());
 
         }
+
+      
     }
 }
