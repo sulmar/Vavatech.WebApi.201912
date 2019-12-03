@@ -24,13 +24,13 @@ namespace Vavatech.WebApi.Api.Controllers
             this.productService = productService;
         }
 
-        [HttpGet]
-        public IHttpActionResult Get()
-        {
-            var products = productService.Get();
+        //[HttpGet]
+        //public IHttpActionResult Get()
+        //{
+        //    var products = productService.Get();
 
-            return Ok(products);
-        }
+        //    return Ok(products);
+        //}
 
         [HttpGet]
         [Route("{id:int}")]
@@ -44,14 +44,14 @@ namespace Vavatech.WebApi.Api.Controllers
             return Ok(product);
         }
 
-        [HttpGet]
-        [Route("{color:alpha}")]
-        public IHttpActionResult Get(string color)
-        {
-            var products = productService.Get(color);
+        //[HttpGet]
+        //[Route("{color:alpha}")]
+        //public IHttpActionResult Get(string color)
+        //{
+        //    var products = productService.Get(color);
 
-            return Ok(products);
-        }
+        //    return Ok(products);
+        //}
 
         [HttpPost]
         public IHttpActionResult Post(Product product)
@@ -73,12 +73,34 @@ namespace Vavatech.WebApi.Api.Controllers
             return Ok();
         }
 
+        //[HttpGet]
+        //public IHttpActionResult Get(decimal from, decimal to)
+        //{
+        //    var products = productService.Get(from, to);
+
+        //    return Ok(products);
+        //}
+
+        // api/products?color=Red&from=10&to=200
+
         [HttpGet]
-        public IHttpActionResult Get(decimal from, decimal to)
+        public IHttpActionResult Get([FromUri] ProductSearchCriteria criteria)
         {
-            var products = productService.Get(from, to);
+            var products = productService.Get(criteria);
 
             return Ok(products);
+        }
+
+        /// api/customers/10/products
+        /// 
+
+        [HttpGet]
+        [Route("~/api/customers/{customerId}/products")]
+        public IHttpActionResult GetByCustomer(int customerId)
+        {
+            throw new NotImplementedException();
+
+            return Ok();
         }
     }
 }
