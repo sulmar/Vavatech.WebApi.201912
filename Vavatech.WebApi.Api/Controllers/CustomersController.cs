@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Http;
 using Vavatech.WebApi.FakeServices;
@@ -10,7 +12,7 @@ using Vavatech.WebApi.Models;
 
 namespace Vavatech.WebApi.Api.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
@@ -31,10 +33,16 @@ namespace Vavatech.WebApi.Api.Controllers
         [Authorize]
         public IHttpActionResult Get()
         {
+
             //if (!this.User.Identity.IsAuthenticated)
             //{
             //    return Unauthorized();
             //}
+
+            ClaimsIdentity identity = (ClaimsIdentity)this.User.Identity;
+
+            var email = identity.FindFirst(ClaimTypes.Email).Value;
+
 
             var customers = customerService.Get();
 

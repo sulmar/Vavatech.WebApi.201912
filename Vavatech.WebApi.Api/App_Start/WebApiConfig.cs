@@ -11,6 +11,7 @@ using Vavatech.WebApi.Api.Contstraints;
 using Vavatech.WebApi.Api.Filters;
 using Vavatech.WebApi.Api.Handlers;
 using Vavatech.WebApi.Api.Resolvers;
+using Vavatech.WebApi.DbServices;
 using Vavatech.WebApi.FakeServices;
 using Vavatech.WebApi.IServices;
 using Vavatech.WebApi.Models;
@@ -27,8 +28,12 @@ namespace Vavatech.WebApi.Api
 
             container.RegisterType<ICustomerService, FakeCustomerService>();
 
-            container.RegisterType<IProductService, FakeProductService>();
-            container.RegisterType<Faker<Product>, ProductFaker>(new ContainerControlledLifetimeManager());
+            //container.RegisterType<IProductService, FakeProductService>();
+            //container.RegisterType<Faker<Product>, ProductFaker>(new ContainerControlledLifetimeManager());
+
+            container.RegisterType<IProductService, DbProductService>();
+            container.RegisterType<WarehouseContext>();
+
 
             container.RegisterType<IAuthenticationFilter, BasicAuthenticationFilter>();
 
@@ -37,8 +42,8 @@ namespace Vavatech.WebApi.Api
             config.MessageHandlers.Add(new LoggerMessageHandler());
             //config.MessageHandlers.Add(new SecretKeyMessageHandler());
 
-            config.Filters.Add(new BasicAuthenticationFilter());
-           // config.Filters.Add(container.Resolve<IAuthenticationFilter>());
+           // config.Filters.Add(new BasicAuthenticationFilter());
+            config.Filters.Add(container.Resolve<IAuthenticationFilter>());
 
 
             var constraintResolver = new DefaultInlineConstraintResolver();
