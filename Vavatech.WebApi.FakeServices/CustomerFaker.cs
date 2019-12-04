@@ -11,6 +11,7 @@ namespace Vavatech.WebApi.FakeServices
         public CustomerFaker()
         {
             StrictMode(true);
+            UseSeed(1);
             RuleFor(p => p.Id, f => f.IndexFaker);
             RuleFor(p => p.FirstName, f => f.Person.FirstName);
             RuleFor(p => p.LastName, f => f.Person.LastName);
@@ -18,6 +19,8 @@ namespace Vavatech.WebApi.FakeServices
             RuleFor(p => p.Salary, f => f.Finance.Amount(100, 1000));
             RuleFor(p => p.IsRemoved, f => f.Random.Bool(0.3f));
             RuleFor(p => p.Pesel, f => f.Commerce.Ean13());
+            RuleFor(p => p.HashPassword, f => f.Internet.Password());
+            Ignore(p => p.DateOfBirth);
 
         }
 

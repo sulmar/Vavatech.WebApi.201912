@@ -99,6 +99,14 @@ namespace Vavatech.WebApi.FakeServices
             customers.Remove(Get(id));
         }
 
+        public bool TryAuthorize(string pesel, string hashPassword, out Customer customer)
+        {
+            customer = customers.FirstOrDefault(c => c.Pesel == pesel && c.HashPassword == hashPassword);
+
+            return customer != null;
+
+        }
+
         public void Update(Customer customer)
         {
             throw new NotImplementedException();

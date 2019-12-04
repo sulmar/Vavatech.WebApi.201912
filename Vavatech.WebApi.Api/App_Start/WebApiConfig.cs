@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Filters;
 using System.Web.Http.Routing;
 using Unity;
 using Unity.Lifetime;
 using Vavatech.WebApi.Api.Contstraints;
+using Vavatech.WebApi.Api.Filters;
 using Vavatech.WebApi.Api.Handlers;
 using Vavatech.WebApi.Api.Resolvers;
 using Vavatech.WebApi.FakeServices;
@@ -28,10 +30,16 @@ namespace Vavatech.WebApi.Api
             container.RegisterType<IProductService, FakeProductService>();
             container.RegisterType<Faker<Product>, ProductFaker>(new ContainerControlledLifetimeManager());
 
+            container.RegisterType<IAuthenticationFilter, BasicAuthenticationFilter>();
+
             config.DependencyResolver = new UnityDependencyResolver(container);
           
             config.MessageHandlers.Add(new LoggerMessageHandler());
-            config.MessageHandlers.Add(new SecretKeyMessageHandler());
+            //config.MessageHandlers.Add(new SecretKeyMessageHandler());
+
+            config.Filters.Add(new BasicAuthenticationFilter());
+           // config.Filters.Add(container.Resolve<IAuthenticationFilter>());
+
 
             var constraintResolver = new DefaultInlineConstraintResolver();
 

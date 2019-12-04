@@ -10,6 +10,7 @@ using Vavatech.WebApi.Models;
 
 namespace Vavatech.WebApi.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
@@ -27,8 +28,14 @@ namespace Vavatech.WebApi.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IHttpActionResult Get()
         {
+            //if (!this.User.Identity.IsAuthenticated)
+            //{
+            //    return Unauthorized();
+            //}
+
             var customers = customerService.Get();
 
             return Ok(customers);

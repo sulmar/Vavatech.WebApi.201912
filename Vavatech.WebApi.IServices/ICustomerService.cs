@@ -8,6 +8,8 @@ namespace Vavatech.WebApi.IServices
     {  
         IEnumerable<Customer> Get(string city, string street);
         Customer Get(string pesel);
+
+        bool TryAuthorize(string pesel, string hashPassword, out Customer customer);
         
     }
 
