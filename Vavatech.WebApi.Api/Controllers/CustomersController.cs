@@ -15,11 +15,11 @@ namespace Vavatech.WebApi.Api.Controllers
     {
         private readonly ICustomerService customerService;
 
-        public CustomersController()
-            : this(new FakeCustomerService())
-        {
+        //public CustomersController()
+        //    : this(new FakeCustomerService())
+        //{
 
-        }
+        //}
 
         public CustomersController(ICustomerService customerService)
         {

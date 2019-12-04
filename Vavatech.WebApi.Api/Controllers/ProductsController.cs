@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
-using Vavatech.WebApi.FakeServices;
 using Vavatech.WebApi.IServices;
 using Vavatech.WebApi.Models;
 
@@ -13,11 +9,6 @@ namespace Vavatech.WebApi.Api.Controllers
     public class ProductsController : ApiController
     {
         private readonly IProductService productService;
-
-        public ProductsController()
-            : this(new FakeProductService(new ProductFaker()))
-        {
-        }
 
         public ProductsController(IProductService productService)
         {
